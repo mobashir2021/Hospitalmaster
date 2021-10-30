@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HMSModelStoreContainer" CdmEntityContainer="HMSEntities">
+    <EntitySetMapping Name="ADDSTOCKS">
+      <EntityTypeMapping TypeName="HMSModel.ADDSTOCK">
+        <MappingFragment StoreEntitySet="ADDSTOCKS">
+          <ScalarProperty Name="STOCKID" ColumnName="STOCKID" />
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="TOTALAMOUNT" ColumnName="TOTALAMOUNT" />
+          <ScalarProperty Name="STOCKDATE" ColumnName="STOCKDATE" />
+          <ScalarProperty Name="AMOUNTPAID" ColumnName="AMOUNTPAID" />
+          <ScalarProperty Name="BALANCE" ColumnName="BALANCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cases">
+      <EntityTypeMapping TypeName="HMSModel.Case">
+        <MappingFragment StoreEntitySet="Cases">
+          <ScalarProperty Name="CasesId" ColumnName="CasesId" />
+          <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+          <ScalarProperty Name="CaseDate" ColumnName="CaseDate" />
+          <ScalarProperty Name="CaseTime" ColumnName="CaseTime" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CaseTypeId" ColumnName="CaseTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CaseTypes">
+      <EntityTypeMapping TypeName="HMSModel.CaseType">
+        <MappingFragment StoreEntitySet="CaseType">
+          <ScalarProperty Name="CaseTypeId" ColumnName="CaseTypeId" />
+          <ScalarProperty Name="CaseType1" ColumnName="CaseType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="HMSModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CASETYPEID" ColumnName="CASETYPEID" />
+          <ScalarProperty Name="PERCENTANGE" ColumnName="PERCENTANGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorCasetypes">
+      <EntityTypeMapping TypeName="HMSModel.DoctorCasetype">
+        <MappingFragment StoreEntitySet="DoctorCasetype">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="CaseTypeId" ColumnName="CaseTypeId" />
+          <ScalarProperty Name="percentage" ColumnName="percentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EXPENSES">
+      <EntityTypeMapping TypeName="HMSModel.EXPENS">
+        <MappingFragment StoreEntitySet="EXPENSES">
+          <ScalarProperty Name="EXPENSEID" ColumnName="EXPENSEID" />
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="TOTALAMOUNT" ColumnName="TOTALAMOUNT" />
+          <ScalarProperty Name="EXPENSEDATE" ColumnName="EXPENSEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMS">
+      <EntityTypeMapping TypeName="HMSModel.ITEM">
+        <MappingFragment StoreEntitySet="ITEMS">
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="BASEPRICE" ColumnName="BASEPRICE" />
+          <ScalarProperty Name="SUPPLIERID" ColumnName="SUPPLIERID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginUsers">
+      <EntityTypeMapping TypeName="HMSModel.LoginUser">
+        <MappingFragment StoreEntitySet="LoginUsers">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="HMSModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="RegdDate" ColumnName="RegdDate" />
+          <ScalarProperty Name="Doctorid" ColumnName="Doctorid" />
+          <ScalarProperty Name="Casetypeid" ColumnName="Casetypeid" />
+          <ScalarProperty Name="CaseDate" ColumnName="CaseDate" />
+          <ScalarProperty Name="CaseTime" ColumnName="CaseTime" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="SubcaseTypeId" ColumnName="SubcaseTypeId" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="DoctorCommission" ColumnName="DoctorCommission" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="SODO" ColumnName="SODO" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PATIENTCASETYPES">
+      <EntityTypeMapping TypeName="HMSModel.PATIENTCASETYPE">
+        <MappingFragment StoreEntitySet="PATIENTCASETYPES">
+          <ScalarProperty Name="PATIENTCASETYPE1" ColumnName="PATIENTCASETYPE" />
+          <ScalarProperty Name="PATIENTID" ColumnName="PATIENTID" />
+          <ScalarProperty Name="DOCTORID" ColumnName="DOCTORID" />
+          <ScalarProperty Name="CASETYPEID" ColumnName="CASETYPEID" />
+          <ScalarProperty Name="SUBCASETYPEID" ColumnName="SUBCASETYPEID" />
+          <ScalarProperty Name="PERCENTAGE" ColumnName="PERCENTAGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prices">
+      <EntityTypeMapping TypeName="HMSModel.Price">
+        <MappingFragment StoreEntitySet="Prices">
+          <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="CaseTypeId" ColumnName="CaseTypeId" />
+          <ScalarProperty Name="price1" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="HMSModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subcasetypes">
+      <EntityTypeMapping TypeName="HMSModel.subcasetype">
+        <MappingFragment StoreEntitySet="subcasetype">
+          <ScalarProperty Name="SubcasetypeId" ColumnName="SubcasetypeId" />
+          <ScalarProperty Name="Subcasetype1" ColumnName="Subcasetype" />
+          <ScalarProperty Name="CaseTypeId" ColumnName="CaseTypeId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUPPLIERs">
+      <EntityTypeMapping TypeName="HMSModel.SUPPLIER">
+        <MappingFragment StoreEntitySet="SUPPLIER">
+          <ScalarProperty Name="SUPPLIERID" ColumnName="SUPPLIERID" />
+          <ScalarProperty Name="SUPPLIERNAME" ColumnName="SUPPLIERNAME" />
+          <ScalarProperty Name="COMPANYNAME" ColumnName="COMPANYNAME" />
+          <ScalarProperty Name="MOBILENO" ColumnName="MOBILENO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

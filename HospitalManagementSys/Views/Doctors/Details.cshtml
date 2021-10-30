@@ -1,0 +1,60 @@
+﻿@model HospitalManagementSys.Models.Doctor
+
+@{
+    ViewBag.Title = "Details";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+
+
+<div>
+    <h4>Doctor Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNo)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DoctorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

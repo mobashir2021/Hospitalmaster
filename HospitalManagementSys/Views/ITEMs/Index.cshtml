@@ -1,0 +1,76 @@
+﻿@*@model IEnumerable<HospitalManagementSys.Models.ITEM>*@
+@model PagedList.IPagedList<HospitalManagementSys.Models.ITEM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Index</h4>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Create New Item" class="btn btn-primary"
+               onclick="location.href='@Url.Action("Create", "ITEMs")'" />
+    </div>
+</div>
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayName("Item")
+        </th>
+        <th>
+            @Html.DisplayName("Base Price")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ITEMNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BASEPRICE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ITEMID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ITEMID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ITEMID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div style="background-color:azure;display:inline-block;border-radius:2px;">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("   <<", "Index", new { page = 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1 })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ");
+        @:< Prev
+    }
+
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+    }
+</div>

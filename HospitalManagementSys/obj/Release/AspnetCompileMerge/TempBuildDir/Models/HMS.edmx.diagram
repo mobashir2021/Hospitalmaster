@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b30620a8ced84081846f506ab1200aa3" Name="Diagram1">
+        <EntityTypeShape EntityType="HMSModel.ADDSTOCK" Width="1.5" PointX="15.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.Case" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.CaseType" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.Doctor" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.DoctorCasetype" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.EXPENS" Width="1.5" PointX="15.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.ITEM" Width="1.5" PointX="13" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.LoginUser" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.Patient" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.PATIENTCASETYPE" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.Price" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.Role" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.subcasetype" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMSModel.SUPPLIER" Width="1.5" PointX="10.75" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="HMSModel.FK_ADDSTOCKS_ITEMS" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_Doctor_CaseType" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_DoctorCasetype_CaseType" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_Patient_CaseType" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_Prices_CaseType" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_subcasetype_CaseType" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_DoctorCasetype_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_Patient_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_Prices_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_EXPENSES_ITEMS" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_ITEMS_SUPPLIER" ManuallyRouted="false" />
+        <AssociationConnector Association="HMSModel.FK_PATIENTCASETYPES_Patient" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

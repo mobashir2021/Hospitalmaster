@@ -1,0 +1,158 @@
+﻿@*@model IEnumerable<HospitalManagementSys.Models.patientviewmodel>*@
+
+@{
+    ViewBag.Title = "Reports";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+<h3>Doctor's Report</h3>
+
+<hr />
+@*<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="button" value="Export As PDF" class="btn btn-primary" id="btnexportpdf" />
+    </div>
+</div>*@
+<br />
+<table class="display nowrap table-bordered" id="MyDataTable" style="margin-left:10px;width:100%;">
+    <thead>
+        <tr>
+            <th>
+                Patient
+            </th>
+            <th>
+                Doctor
+            </th>
+            <th>
+                Case Type
+            </th>
+            <th>
+                Sub Casetype
+            </th>
+            <th>
+                Doctor Commission
+            </th>
+            <th>
+                Case Date
+            </th>
+            
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pt.PatientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dc.DoctorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ct.CaseType1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sct.Subcasetype1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pt.DoctorCommission)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pt.TotalAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pt.CaseDate)
+                </td>
+
+            </tr>
+        }*@
+    </tbody>
+</table>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#MyDataTable").DataTable();
+            GetPatientRecord();
+
+            //$("#btnexportpdf").click(function () {
+            //    var tabledaa = $('#MyDataTable').DataTable();
+            //    for (var i = 0; i < tabledaa.rows('.selected').data().length; i++) {
+                    
+            //        alert( table.rows('.selected').data()[i]);
+            //    }
+            //});
+        });
+
+        
+
+
+        
+
+        var GetPatientRecord = function () {
+            $.ajax({
+                type: "Get",
+                url: "/Reports/GetPatientReport",
+                success: function (response) {
+                    BindDataTable(response);
+                    //var table = $('#MyDataTable').DataTable();
+
+                    //$('#MyDataTable tbody').on('click', 'tr', function () {
+                    //    if ($(this).hasClass('selected')) {
+                    //        $(this).removeClass('selected');
+                    //    }
+                    //    else {
+                    //        table.$('tr.selected').removeClass('selected');
+                    //        $(this).addClass('selected');
+                    //    }
+                    //});
+                }
+            });
+        };
+
+        var BindDataTable = function (response) {
+            $("#MyDataTable").DataTable({
+                "aaData": response,
+                "aoColumns": [
+                    { "mData": "Patient" },
+                    { "mData": "Doctor" },
+                    { "mData": "CaseType" },
+                    { "mData": "SubCaseType" },
+                    { "mData": "DoctorCommission" },
+                    { "mData": "CaseDate" },
+
+                ]
+                ,
+                "dom": 'Bfrtip',
+                "buttons": [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                "select": true,
+                "aaSorting": [],
+                "columnDefs": [{
+                    "targets": [0,  3, 4],
+                    "orderable": false
+                }]
+            });
+            
+        };
+
+        //$("#MyDataTable tbody tr").click(function () {
+        //    //get row contents into array
+        //    alert($(this));
+        //    var tabledata = $(this).children("td").map(function () {
+        //        return $(this).text();
+        //    }).get();
+        //    alert(JSON.stringify(tabledata));
+        //});
+        
+    </script>
+}

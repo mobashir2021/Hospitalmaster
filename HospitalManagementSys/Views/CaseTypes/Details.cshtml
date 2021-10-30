@@ -1,0 +1,36 @@
+﻿@model HospitalManagementSys.Models.CaseType
+
+@{
+    ViewBag.Title = "Details";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+
+
+<div>
+    <h4>Case Type Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CaseType1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseType1)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CaseTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

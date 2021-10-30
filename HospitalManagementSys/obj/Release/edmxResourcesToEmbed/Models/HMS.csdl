@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADDSTOCK">
+    <Key>
+      <PropertyRef Name="STOCKID" />
+    </Key>
+    <Property Name="STOCKID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ITEMID" Type="Int32" Nullable="false" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <Property Name="TOTALAMOUNT" Type="Int32" />
+    <Property Name="STOCKDATE" Type="DateTime" Precision="3" />
+    <Property Name="AMOUNTPAID" Type="Int32" />
+    <Property Name="BALANCE" Type="Int32" />
+    <NavigationProperty Name="ITEM" Relationship="Self.FK_ADDSTOCKS_ITEMS" FromRole="ADDSTOCKS" ToRole="ITEMS" />
+  </EntityType>
+  <EntityType Name="Case">
+    <Key>
+      <PropertyRef Name="CasesId" />
+    </Key>
+    <Property Name="CasesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CaseName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CaseDate" Type="DateTime" Precision="3" />
+    <Property Name="CaseTime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DoctorId" Type="Int32" Nullable="false" />
+    <Property Name="PatientId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="CaseTypeId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CaseType">
+    <Key>
+      <PropertyRef Name="CaseTypeId" />
+    </Key>
+    <Property Name="CaseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CaseType1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctor_CaseType" FromRole="CaseType" ToRole="Doctor" />
+    <NavigationProperty Name="DoctorCasetypes" Relationship="Self.FK_DoctorCasetype_CaseType" FromRole="CaseType" ToRole="DoctorCasetype" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_Patient_CaseType" FromRole="CaseType" ToRole="Patient" />
+    <NavigationProperty Name="Prices" Relationship="Self.FK_Prices_CaseType" FromRole="CaseType" ToRole="Prices" />
+    <NavigationProperty Name="subcasetypes" Relationship="Self.FK_subcasetype_CaseType" FromRole="CaseType" ToRole="subcasetype" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="DoctorId" />
+    </Key>
+    <Property Name="DoctorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="CASETYPEID" Type="Int32" />
+    <Property Name="PERCENTANGE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CaseType" Relationship="Self.FK_Doctor_CaseType" FromRole="Doctor" ToRole="CaseType" />
+    <NavigationProperty Name="DoctorCasetypes" Relationship="Self.FK_DoctorCasetype_Doctor" FromRole="Doctor" ToRole="DoctorCasetype" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_Patient_Doctor" FromRole="Doctor" ToRole="Patient" />
+    <NavigationProperty Name="Prices" Relationship="Self.FK_Prices_Doctor" FromRole="Doctor" ToRole="Prices" />
+  </EntityType>
+  <EntityType Name="DoctorCasetype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorId" Type="Int32" Nullable="false" />
+    <Property Name="CaseTypeId" Type="Int32" Nullable="false" />
+    <Property Name="percentage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CaseType" Relationship="Self.FK_DoctorCasetype_CaseType" FromRole="DoctorCasetype" ToRole="CaseType" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK_DoctorCasetype_Doctor" FromRole="DoctorCasetype" ToRole="Doctor" />
+  </EntityType>
+  <EntityType Name="EXPENS">
+    <Key>
+      <PropertyRef Name="EXPENSEID" />
+    </Key>
+    <Property Name="EXPENSEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ITEMID" Type="Int32" Nullable="false" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <Property Name="TOTALAMOUNT" Type="Int32" />
+    <Property Name="EXPENSEDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ITEM" Relationship="Self.FK_EXPENSES_ITEMS" FromRole="EXPENSES" ToRole="ITEMS" />
+  </EntityType>
+  <EntityType Name="ITEM">
+    <Key>
+      <PropertyRef Name="ITEMID" />
+    </Key>
+    <Property Name="ITEMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ITEMNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BASEPRICE" Type="Int32" />
+    <Property Name="SUPPLIERID" Type="Int32" />
+    <NavigationProperty Name="ADDSTOCKS" Relationship="Self.FK_ADDSTOCKS_ITEMS" FromRole="ITEMS" ToRole="ADDSTOCKS" />
+    <NavigationProperty Name="EXPENSES" Relationship="Self.FK_EXPENSES_ITEMS" FromRole="ITEMS" ToRole="EXPENSES" />
+    <NavigationProperty Name="SUPPLIER" Relationship="Self.FK_ITEMS_SUPPLIER" FromRole="ITEMS" ToRole="SUPPLIER" />
+  </EntityType>
+  <EntityType Name="LoginUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="PatientId" />
+    </Key>
+    <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="BloodGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="RegdDate" Type="DateTime" Precision="3" />
+    <Property Name="Doctorid" Type="Int32" Nullable="false" />
+    <Property Name="Casetypeid" Type="Int32" Nullable="false" />
+    <Property Name="CaseDate" Type="DateTime" Precision="3" />
+    <Property Name="CaseTime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Percentage" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SubcaseTypeId" Type="Int32" />
+    <Property Name="TotalAmount" Type="Int32" />
+    <Property Name="DoctorCommission" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Notes" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="Discount" Type="Int32" />
+    <Property Name="Balance" Type="Int32" />
+    <Property Name="SODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BillNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CaseType" Relationship="Self.FK_Patient_CaseType" FromRole="Patient" ToRole="CaseType" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK_Patient_Doctor" FromRole="Patient" ToRole="Doctor" />
+    <NavigationProperty Name="PATIENTCASETYPES" Relationship="Self.FK_PATIENTCASETYPES_Patient" FromRole="Patient" ToRole="PATIENTCASETYPES" />
+  </EntityType>
+  <EntityType Name="PATIENTCASETYPE">
+    <Key>
+      <PropertyRef Name="PATIENTCASETYPE1" />
+    </Key>
+    <Property Name="PATIENTCASETYPE1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PATIENTID" Type="Int32" Nullable="false" />
+    <Property Name="DOCTORID" Type="Int32" Nullable="false" />
+    <Property Name="CASETYPEID" Type="Int32" />
+    <Property Name="SUBCASETYPEID" Type="Int32" />
+    <Property Name="PERCENTAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_PATIENTCASETYPES_Patient" FromRole="PATIENTCASETYPES" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="PriceId" />
+    </Key>
+    <Property Name="PriceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorId" Type="Int32" Nullable="false" />
+    <Property Name="CaseTypeId" Type="Int32" Nullable="false" />
+    <Property Name="price1" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CaseType" Relationship="Self.FK_Prices_CaseType" FromRole="Prices" ToRole="CaseType" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK_Prices_Doctor" FromRole="Prices" ToRole="Doctor" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="subcasetype">
+    <Key>
+      <PropertyRef Name="SubcasetypeId" />
+    </Key>
+    <Property Name="SubcasetypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subcasetype1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CaseTypeId" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <NavigationProperty Name="CaseType" Relationship="Self.FK_subcasetype_CaseType" FromRole="subcasetype" ToRole="CaseType" />
+  </EntityType>
+  <EntityType Name="SUPPLIER">
+    <Key>
+      <PropertyRef Name="SUPPLIERID" />
+    </Key>
+    <Property Name="SUPPLIERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SUPPLIERNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COMPANYNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="MOBILENO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ITEMS" Relationship="Self.FK_ITEMS_SUPPLIER" FromRole="SUPPLIER" ToRole="ITEMS" />
+  </EntityType>
+  <Association Name="FK_ADDSTOCKS_ITEMS">
+    <End Role="ITEMS" Type="Self.ITEM" Multiplicity="1" />
+    <End Role="ADDSTOCKS" Type="Self.ADDSTOCK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITEMS">
+        <PropertyRef Name="ITEMID" />
+      </Principal>
+      <Dependent Role="ADDSTOCKS">
+        <PropertyRef Name="ITEMID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_CaseType">
+    <End Role="CaseType" Type="Self.CaseType" Multiplicity="0..1" />
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CaseType">
+        <PropertyRef Name="CaseTypeId" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="CASETYPEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorCasetype_CaseType">
+    <End Role="CaseType" Type="Self.CaseType" Multiplicity="1" />
+    <End Role="DoctorCasetype" Type="Self.DoctorCasetype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CaseType">
+        <PropertyRef Name="CaseTypeId" />
+      </Principal>
+      <Dependent Role="DoctorCasetype">
+        <PropertyRef Name="CaseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_CaseType">
+    <End Role="CaseType" Type="Self.CaseType" Multiplicity="1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CaseType">
+        <PropertyRef Name="CaseTypeId" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="Casetypeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prices_CaseType">
+    <End Role="CaseType" Type="Self.CaseType" Multiplicity="1" />
+    <End Role="Prices" Type="Self.Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CaseType">
+        <PropertyRef Name="CaseTypeId" />
+      </Principal>
+      <Dependent Role="Prices">
+        <PropertyRef Name="CaseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subcasetype_CaseType">
+    <End Role="CaseType" Type="Self.CaseType" Multiplicity="0..1" />
+    <End Role="subcasetype" Type="Self.subcasetype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CaseType">
+        <PropertyRef Name="CaseTypeId" />
+      </Principal>
+      <Dependent Role="subcasetype">
+        <PropertyRef Name="CaseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorCasetype_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="DoctorCasetype" Type="Self.DoctorCasetype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="DoctorCasetype">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="Doctorid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prices_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Prices" Type="Self.Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="Prices">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXPENSES_ITEMS">
+    <End Role="ITEMS" Type="Self.ITEM" Multiplicity="1" />
+    <End Role="EXPENSES" Type="Self.EXPENS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITEMS">
+        <PropertyRef Name="ITEMID" />
+      </Principal>
+      <Dependent Role="EXPENSES">
+        <PropertyRef Name="ITEMID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITEMS_SUPPLIER">
+    <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="0..1" />
+    <End Role="ITEMS" Type="Self.ITEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUPPLIER">
+        <PropertyRef Name="SUPPLIERID" />
+      </Principal>
+      <Dependent Role="ITEMS">
+        <PropertyRef Name="SUPPLIERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PATIENTCASETYPES_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="PATIENTCASETYPES" Type="Self.PATIENTCASETYPE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="PATIENTCASETYPES">
+        <PropertyRef Name="PATIENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADDSTOCKS" EntityType="Self.ADDSTOCK" />
+    <EntitySet Name="Cases" EntityType="Self.Case" />
+    <EntitySet Name="CaseTypes" EntityType="Self.CaseType" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+    <EntitySet Name="DoctorCasetypes" EntityType="Self.DoctorCasetype" />
+    <EntitySet Name="EXPENSES" EntityType="Self.EXPENS" />
+    <EntitySet Name="ITEMS" EntityType="Self.ITEM" />
+    <EntitySet Name="LoginUsers" EntityType="Self.LoginUser" />
+    <EntitySet Name="Patients" EntityType="Self.Patient" />
+    <EntitySet Name="PATIENTCASETYPES" EntityType="Self.PATIENTCASETYPE" />
+    <EntitySet Name="Prices" EntityType="Self.Price" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="subcasetypes" EntityType="Self.subcasetype" />
+    <EntitySet Name="SUPPLIERs" EntityType="Self.SUPPLIER" />
+    <AssociationSet Name="FK_ADDSTOCKS_ITEMS" Association="Self.FK_ADDSTOCKS_ITEMS">
+      <End Role="ITEMS" EntitySet="ITEMS" />
+      <End Role="ADDSTOCKS" EntitySet="ADDSTOCKS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_CaseType" Association="Self.FK_Doctor_CaseType">
+      <End Role="CaseType" EntitySet="CaseTypes" />
+      <End Role="Doctor" EntitySet="Doctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorCasetype_CaseType" Association="Self.FK_DoctorCasetype_CaseType">
+      <End Role="CaseType" EntitySet="CaseTypes" />
+      <End Role="DoctorCasetype" EntitySet="DoctorCasetypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_CaseType" Association="Self.FK_Patient_CaseType">
+      <End Role="CaseType" EntitySet="CaseTypes" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prices_CaseType" Association="Self.FK_Prices_CaseType">
+      <End Role="CaseType" EntitySet="CaseTypes" />
+      <End Role="Prices" EntitySet="Prices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subcasetype_CaseType" Association="Self.FK_subcasetype_CaseType">
+      <End Role="CaseType" EntitySet="CaseTypes" />
+      <End Role="subcasetype" EntitySet="subcasetypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorCasetype_Doctor" Association="Self.FK_DoctorCasetype_Doctor">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="DoctorCasetype" EntitySet="DoctorCasetypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Doctor" Association="Self.FK_Patient_Doctor">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prices_Doctor" Association="Self.FK_Prices_Doctor">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Prices" EntitySet="Prices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXPENSES_ITEMS" Association="Self.FK_EXPENSES_ITEMS">
+      <End Role="ITEMS" EntitySet="ITEMS" />
+      <End Role="EXPENSES" EntitySet="EXPENSES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITEMS_SUPPLIER" Association="Self.FK_ITEMS_SUPPLIER">
+      <End Role="SUPPLIER" EntitySet="SUPPLIERs" />
+      <End Role="ITEMS" EntitySet="ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PATIENTCASETYPES_Patient" Association="Self.FK_PATIENTCASETYPES_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="PATIENTCASETYPES" EntitySet="PATIENTCASETYPES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

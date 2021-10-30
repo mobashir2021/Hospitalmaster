@@ -1,0 +1,59 @@
+﻿@model HospitalManagementSys.Models.ITEM
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Edit</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h5>Items</h5>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ITEMID)
+
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Item", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.ITEMNAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ITEMNAME, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-md-4">
+                @Html.Label("Price", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.BASEPRICE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BASEPRICE, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Supplier", "Supplier", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.DropDownList("SUPPLIERID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SUPPLIERID, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

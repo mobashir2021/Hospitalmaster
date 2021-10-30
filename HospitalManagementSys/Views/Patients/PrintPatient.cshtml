@@ -1,0 +1,106 @@
+﻿@model HospitalManagementSys.Models.Printpatientviewmodel
+@{
+    ViewBag.Title = "PrintPatient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="printcontainer" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; width:900px;margin-left:30px;border-left: 2px solid black;border-right: 2px solid black;border-top: 2px solid black;">
+    <div style="padding-left:150px;background-color:white;color:black;">
+        <h4 style="padding-left:70px;"><b>Yashoda Imazing &amp; Diagnotic Centre</b></h4>
+        <h7>Behind Dr. Ashok Kumar Sadhana Hospital, Near Jambigadde, Golapalli Road, Jagtial</h7>
+    </div>
+    <br />
+    <div style="padding-left:400px;width:50px;">
+        <span><b>Bill/Receipt</b></span>
+    </div>
+    <br />
+    
+    <div style="padding-left:10px;color:black;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+        <label>Patient Name   : </label><span><b>@Model.Patient</b></span><br />
+        <label>SO/DO/WO : </label><span>@Model.SODO</span> <br />
+        <label>Age/Sex   : </label><span>@Model.Age/@Model.Sex</span><br />
+        <label>ContactNo   : </label><span>@Model.MobileNo</span><br />
+        <label>Address   : </label><span>@Model.Address</span><br />
+        <label>Ref by   : </label><span>@Model.Doctor</span>
+        <div style="float:right;padding-right:80px;">
+            <label>Bill No   : </label><span><b>@Model.billno</b></span><br />
+            <label>Date   : </label><span><b>@Model.CaseDate</b></span>
+        </div>
+    </div>
+    
+    @*<div style="padding-left:10px;color:black;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+        <label>Doctor   : </label><span><b> @Model.Doctor</b></span><br />
+        <label>EmailId  : </label><span> @Model.DoctorEmailId</span><br />
+        <label>Mobile No : </label><span> @Model.DoctorPhoneNo</span><br />
+        <label>Case Type : </label><span> @Model.CaseType</span><br />
+        <label>Subcase Type : </label><span> @Model.SubCaseType</span>
+    </div>*@
+
+    <table class="table" style="border:1px solid black;">
+        <tr>
+            <th style="border:1px solid black;color:black;">
+                SerialNo
+            </th>
+            <th style="border:1px solid black;color:black;">
+                Casetype
+            </th>
+            <th style="border:1px solid black;color:black;">
+                Subcasetype
+            </th>
+            <th style="border:1px solid black;color:black;">
+                Charges
+            </th>
+        </tr>
+        
+        @foreach (var item in Model.lstpatientcasetype)
+        {
+            <tr>
+                <td style="border:1px solid black;color:black;">
+                    @Html.DisplayFor(modelItem => item.serialno)
+                </td>
+                <td style="border:1px solid black;color:black;">
+                    @Html.DisplayFor(modelItem => item.Casetype)
+                </td>
+                <td style="border:1px solid black;color:black;">
+                    @Html.DisplayFor(modelItem => item.Subcasetype)
+                </td>
+                <td style="border:1px solid black;color:black;">
+                    @Html.DisplayFor(modelItem => item.TestCharges)
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        <div style="float:left;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:black;padding-left:10px;">
+            &nbsp;&nbsp;<label>Rupees in words : </label><span><b>@Model.amountinwords</b></span><br />
+            <div>
+                &nbsp;&nbsp;<span>Payment Mode : Cash</span>
+            </div>
+        </div>
+        <div style="float:right;padding-left:47px;margin-right:10px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color:black;border-left:2px solid black;">
+            <label>Total    Amount : Rs.</label><span>@Model.TotalAmount</span><br />
+            <label>Discount Amount : Rs.</label><span>@Model.Discount</span>
+            <hr style="border: 1px solid black;"/>
+            <label>Amount Balance  : Rs.</label><span>@Model.AmountToBePaid</span>
+        </div>
+    </div>
+    <div style="border-bottom: 2px solid black; width:900px;clear:both;"></div>
+    
+    
+</div>
+<div style="float:left;padding-left:500px;clear:both;">
+    <input type="submit" value="Print" id="btnprint" class="btn btn-primary" />
+</div>
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#btnprint").click(function(e){
+            e.preventDefault();
+            $("#printcontainer").printThis();
+        });
+    });
+</script>
+}
+
+

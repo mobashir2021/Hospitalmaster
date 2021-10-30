@@ -1,0 +1,222 @@
+﻿@model HospitalManagementSys.Models.Doctor
+
+@{
+    ViewBag.Title = "Create";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" id="maindivform">
+        <h4>Add Doctor</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <!-- Text input-->
+            <div class="col-md-4">
+                @Html.Label("Doctor", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.DoctorName, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Email Id", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <!-- Text input-->
+            <div class="col-md-4">
+                @Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Mobile No", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+        </div>
+        <br />
+        @*<div class="row">
+             Text input
+            <div class="col-md-4">
+                @Html.Label("Case Type", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.DropDownList("CASETYPEID", (List<SelectListItem>)ViewBag.Casetypelist, "Select Case Type", new { @class = "form-control" })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Percentage", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.PERCENTANGE, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+        </div>*@
+        @*<div class="row">
+            
+                <div class="form-group table-responsive table-full-width">
+                    <label for="sel1">Add CaseType</label>
+                    <table id="addcasetype" class="table table-bordered table-responsive">
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="col-md-4">
+                                    @Html.DropDownList("CASETYPEID", (List<SelectListItem>)ViewBag.Casetypelist, "Select Case Type", new { @class = "form-control input-md-4", id = "casetypeid1" })
+                                </div>
+                            </td>
+                            
+                            <td class="col-md-4">
+                                <div class="col-md-4">
+                                    @Html.EditorFor(model => model.PERCENTANGE, new { htmlAttributes = new { @class = "form-control input-md-4", placeholder = "Percentage" } })
+                                </div>
+                            </td>
+                            <td class="col-md-2">
+                                <button name="addmore" id="addmore" class="form-control col-md-2">Add More</button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+        </div>*@
+        <div class="row">
+            
+            <div class="col-md-4">
+                @Html.Label("Cases", htmlAttributes: new { @class = "control-label col-md-3" })
+
+                @Html.DropDownList("CASETYPEID", (List<SelectListItem>)ViewBag.Casetypelist, "Select Case Type", new { @class = "form-control input-md-3" })
+            </div>
+            <div class="col-md-5">
+                @Html.Label("Incentive Direct Amt", htmlAttributes: new { @class = "control-label col-md-5" })
+
+                @Html.EditorFor(model => model.PERCENTANGE, new { htmlAttributes = new { @class = "form-control input-md-2" } })
+                    
+            </div>
+            
+            <div class="col-md-2">
+                @Html.Label("", htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                <button name="addmore" id="addmore" class="btn btn-dark input-md-3" ><i class="fa fa-plus-square-o"></i>Add More</button>
+            </div>
+        </div>
+        
+        
+        <br />
+        <div class="form-group" id="btnsavediv">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" id="btnsave" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnsave").click(function (e) {
+                var selecteddoc = $('#CASETYPEID').val();
+                if ((selecteddoc == 0) || (selecteddoc == "")) {
+                    alert("Kindly Choose Doctor!")
+                    e.preventDefault();
+                } else if ($("#PERCENTANGE").val() == "") {
+                    alert("Kindly enter Percentage!")
+                    e.preventDefault();
+                } else if ($("#DoctorName").val() == "") {
+                    alert("Kindly Enter Doctor Name!")
+                    e.preventDefault();
+                } 
+            });
+
+            $('#addmore').click(function (e) {
+                e.preventDefault();
+                AddDropDownList();
+            });
+        });
+        
+
+        function addControls() {
+
+        }
+
+
+        function AddDropDownList() {
+            var arr = {};
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetCasetype")',
+                
+                dataType: 'json',
+                success: function (data) {
+                    
+                    arr = data;
+                    var btnsavedata = $('#btnsavediv');
+                    //Create a DropDownList element.
+                    var ddlCustomers = $('<select class="form-control input-md-3" name="casetypes"></select>');
+                    
+                    //Add the Options to the DropDownList.
+                    
+                    $(arr).each(function () {
+                        
+                        var option = $("<option />");
+
+                        //Set Customer Name in Text part.
+                        option.html(this.Text);
+
+                        //Set CustomerId in Value part.
+                        option.val(this.Value);
+
+                        //Add the Option element to DropDownList.
+                        ddlCustomers.append(option);
+                    });
+
+                    //Reference the container DIV.
+                    var dvContainer = $("#maindivform")
+
+                    //Add the DropDownList to DIV.
+                    var div = $('<div class="row"></div>');
+                    var inputctr = $('<input type="text" class="form-control input-md-2" name="percentages" />');
+                    var divnew = $('<div class="col-md-3"></div>');
+                    var divnew2 = $('<div class="col-md-2"></div>');
+
+
+                    divnew.append(ddlCustomers);
+                    divnew2.append(inputctr);
+                    //Create a Remove Button.
+                    var btnRemove = $("<input type = 'button' class='btn btn-dark' value = 'Remove' />");
+                    btnRemove.click(function () {
+                        $(this).parent().remove();
+                    });
+
+                    //Add the Remove Buttton to DIV.
+                    divnew.append(btnRemove);
+                    div.append(divnew);
+                    div.append(divnew2);
+                    div.append(btnRemove);
+                    //Add the DIV to the container DIV.
+                    div.insertBefore(btnsavedata);
+
+                    var newbrk = $("<br />");
+                    newbrk.insertBefore(btnsavedata);
+                },
+                error: function (emp) {
+                    alert('error');
+                }
+            });
+            
+        };
+    </script>
+    
+}

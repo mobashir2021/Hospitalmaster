@@ -1,0 +1,82 @@
+﻿@model HospitalManagementSys.Models.subcasetype
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Edit</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h5>Sub Case Type</h5>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SubcasetypeId)
+
+        <div class="row">
+            <!-- Text input-->
+            <div class="col-md-4">
+                @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Subcasetype1, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Case Type", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.DropDownList("CaseTypeId", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+
+        </div>
+        <br />
+
+        <div class="row">
+            <!-- Text input-->
+            <div class="col-md-4">
+                @Html.Label("Price", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+
+
+        </div>
+        <br />
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Subcasetype1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Subcasetype1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Subcasetype1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CaseTypeId, "CaseTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CaseTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CaseTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

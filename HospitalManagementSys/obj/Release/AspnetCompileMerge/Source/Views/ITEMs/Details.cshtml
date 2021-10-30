@@ -1,0 +1,35 @@
+﻿@model HospitalManagementSys.Models.ITEM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ITEM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ITEMNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITEMNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BASEPRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BASEPRICE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ITEMID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

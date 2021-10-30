@@ -1,0 +1,116 @@
+﻿@model HospitalManagementSys.Models.Doctor
+
+@{
+    ViewBag.Title = "Edit";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edit Doctor</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.DoctorId)
+
+        <div class="row">
+            <!-- Text input-->
+            <div class="col-md-4">
+                @Html.Label("Doctor", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.DoctorName, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Email Id", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <!-- Text input-->
+            <div class="col-md-4">
+                @Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Mobile No", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            <div class="col-md-4">
+                @Html.Label("Cases", htmlAttributes: new { @class = "control-label col-md-3" })
+
+                @Html.DropDownList("CASETYPEID", (List<SelectListItem>)ViewBag.Casetypelist, "Select Case Type", new { @class = "form-control input-md-3" })
+            </div>
+            <div class="col-md-5">
+                @Html.Label("Incentive Direct Amt", htmlAttributes: new { @class = "control-label col-md-5" })
+
+                @Html.EditorFor(model => model.PERCENTANGE, new { htmlAttributes = new { @class = "form-control input-md-2" } })
+
+            </div>
+
+            
+        </div>
+
+        @*<div class="form-group">
+            @Html.Label("Doctor Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DoctorName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                @Html.ValidationMessageFor(model => model.DoctorName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Email Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Mobile No", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

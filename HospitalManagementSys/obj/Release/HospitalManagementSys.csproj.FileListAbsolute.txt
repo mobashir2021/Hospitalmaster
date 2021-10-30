@@ -1,0 +1,112 @@
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\ApplicationInsights.config
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\HospitalManagementSys.dll.config
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\HospitalManagementSys.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\HospitalManagementSys.pdb
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Antlr3.Runtime.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\dotless.Core.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\EntityFramework.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\EntityFramework.SqlServer.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.Web.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Newtonsoft.Json.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Net.Http.Formatting.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Helpers.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Http.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Http.WebHost.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Mvc.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Optimization.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Optimization.Less.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Razor.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Webpages.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Webpages.Razor.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\WebGrease.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Antlr3.Runtime.pdb
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\EntityFramework.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\EntityFramework.SqlServer.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.Web.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Optimization.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Optimization.Less.pdb
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Optimization.Less.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Razor.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Webpages.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Webpages.Razor.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Helpers.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Mvc.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\Newtonsoft.Json.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Net.Http.Formatting.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Http.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\bin\System.Web.Http.WebHost.xml
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\obj\Release\HospitalManagementSys.dll
+C:\Users\Mobashshir\Documents\Visual Studio 2015\Projects\HospitalManagementSys\HospitalManagementSys\obj\Release\HospitalManagementSys.pdb
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\ApplicationInsights.config
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\HospitalManagementSys.dll.config
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\HospitalManagementSys.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\HospitalManagementSys.pdb
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Antlr3.Runtime.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\dotless.Core.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\EntityFramework.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\itextsharp.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.Web.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.ApplicationInsights.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Newtonsoft.Json.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\PagedList.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\PagedList.Mvc.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Net.Http.Formatting.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Helpers.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Http.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Http.WebHost.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Mvc.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Optimization.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Optimization.Less.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Razor.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Webpages.Deployment.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Webpages.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Webpages.Razor.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\WebGrease.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Antlr3.Runtime.pdb
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\EntityFramework.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\itextsharp.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.Web.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Microsoft.ApplicationInsights.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\PagedList.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\PagedList.Mvc.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Optimization.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Optimization.Less.pdb
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Optimization.Less.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Razor.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Webpages.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Webpages.Deployment.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Webpages.Razor.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Helpers.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Mvc.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\Newtonsoft.Json.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Net.Http.Formatting.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Http.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\bin\System.Web.Http.WebHost.xml
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\obj\Release\HospitalManagementSys.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\obj\Release\HospitalManagementSys.csproj.CopyComplete
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\obj\Release\HospitalManagementSys.dll
+C:\Users\admin\source\repos\HospitalManagementSysLive\HospitalManagementSys\obj\Release\HospitalManagementSys.pdb

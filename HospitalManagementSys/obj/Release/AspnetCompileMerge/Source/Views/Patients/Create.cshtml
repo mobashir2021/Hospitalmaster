@@ -1,0 +1,691 @@
+﻿@model HospitalManagementSys.Models.Patient
+
+@{
+    ViewBag.Title = "Create";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+<h4>Add Patient</h4>
+<hr />
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        @*<input type="button" value="Import Patient" class="btn btn-primary" id="btnimportpatient" />*@
+        @using (Html.BeginForm("Import", "Patients", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="excelfile" class="btn btn-primary" /><br /><br />
+                    <input type="submit" value="Import Patients" class="btn btn-primary" />
+        }
+    </div>
+</div>
+<br />
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <!-- Text input-->
+            <div class="col-md-4">
+                @Html.Label("P.Name", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.PatientName, new { htmlAttributes = new { @class = "form-control input-md-4" , name = "Patient" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("SO/DO/WO", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.SODO, new { htmlAttributes = new { @class = "form-control input-md-4", name = "SODO" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control input-md-4", name = "Address" } })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("Bill No", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.BillNo, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Mobile No", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control input-md-4", name = "MobileNo" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Gender", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.DropDownList("Sex", (SelectList)ViewBag.Sex, "Select Gender", new { @class = "form-control", name = "Gender" })
+            </div>
+        </div>
+        <br />
+        
+        <div class="row">
+            <!-- Text input-->
+            <div class="col-md-4">
+                @Html.Label("Age", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control input-md-4", name = "Age" } })
+            </div>
+            
+            <div class="col-md-4">
+                @Html.Label("BloodGroup", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.BloodGroup, new { htmlAttributes = new { @class = "form-control input-md-4", name = "BloodGroup" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Doctor", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.DropDownList("Doctorid", null, htmlAttributes: new { @class = "form-control input-md-4", id = "Doctorid"  })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <!-- Text input-->
+            
+            <div class="col-md-4">
+                @Html.Label("Case Type", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.DropDownList("Casetypeid", null, htmlAttributes: new { @class = "form-control input-md-4", id = "Casetypeid" })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Subcasetype", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.DropDownList("SubCasetypeid", (SelectList)ViewBag.SubCasetypeid, "Select Subcasetype", new { @class = "form-control", id = "SubCasetypeid" })
+            </div>
+
+            <div class="col-md-2">
+                @Html.Label("", htmlAttributes: new { @class = "control-label col-md-2" })<br />
+                <button name="addmore" id="addmore" class="btn btn-dark input-md-3"><i class="fa fa-plus-square-o"></i>Add More</button>
+            </div>
+            
+        </div>
+        <br />
+        <div class="row" id="totaldiv">
+            <!-- Text input-->
+
+            <div class="col-md-4">
+                @Html.Label("Total", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.TotalAmount, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Discount", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Balance", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            <!-- Text input-->
+            
+        </div>
+        <br />
+        <div class="row">
+            <!-- Text input-->
+
+            <div class="col-md-4">
+                @Html.Label("Notes", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+                @Html.HiddenFor(model => model.Percentage)
+                @Html.HiddenFor(model => model.DoctorCommission)
+            </div>
+            <div class="col-md-4">
+                @Html.Label("Remarks", htmlAttributes: new { @class = "control-label col-md-4" })
+
+                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control input-md-4" } })
+            </div>
+            
+
+        </div>
+        <br />
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" name="Create" id="btncurrcreate" />
+                <input type="submit" value="Create and Print" class="btn btn-primary" name="Print" id="btnprintcreate" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+<script type="text/javascript">
+    //$(document).ready(function() {
+    //    $('#Doctorid').change(function() {
+    //        $.get("/Patients/GetCasetype", { Doctorid: $("#Doctorid").val() }, function (data) {
+    //            $('#Casetypeid').empty();
+    //            $.each(data, function (index, row) {
+    //                alert(data);
+    //                $('#Casetypeid').append("<option value='" + row.CaseTypeId + "'>" + row.CaseType1 + "</option>")
+    //            });
+    //        });
+
+    //        $.get("/Patients/GetPercentage", { Doctorid: $("#Doctorid").val() }, function (data) {
+    //            $('#Percentage').val(data);
+    //        });
+    //    });
+    //});
+    
+
+    var i = 0;
+    $(document).ready(function () {
+        
+        $("#btncurrcreate").click(function (e) {
+            var selecteddoc = $('#Doctorid').val();
+            var selectct = $('#Casetypeid').val();
+            var selectsct = $('#SubCasetypeid').val();
+            if ((selecteddoc == 0)) {
+                alert("Kindly Choose Doctor!")
+                e.preventDefault();
+            } else if ((selectct == 0)) {
+                alert("Kindly Choose Casetype!")
+                e.preventDefault();
+            } else if ((selectsct == 0) || (selectsct == "")) {
+                alert("Kindly Choose Subcasetype!")
+                e.preventDefault();
+            } else if ($("#PatientName").val() == "") {
+                alert("Kindly enter Patient Name!")
+                e.preventDefault();
+            } else if ($("#Sex").val() == "") {
+                alert("Kindly choose Gender!")
+                e.preventDefault();
+            } else if ($("#Age").val() == "") {
+                alert("Kindly enter Age!")
+                e.preventDefault();
+            }
+
+
+        });
+
+        $("#btnprintcreate").click(function (e) {
+            var selecteddoc = $('#Doctorid').val();
+            var selectct = $('#Casetypeid').val();
+            var selectsct = $('#SubCasetypeid').val();
+            if ((selecteddoc == 0)) {
+                alert("Kindly Choose Doctor!")
+                e.preventDefault();
+            } else if ((selectct == 0)) {
+                alert("Kindly Choose Casetype!")
+                e.preventDefault();
+            } else if ((selectsct == 0) || (selectsct == "")) {
+                alert("Kindly Choose Subcasetype!")
+                e.preventDefault();
+            } else if ($("#PatientName").val() == "") {
+                alert("Kindly enter Patient Name!")
+                e.preventDefault();
+            } else if ($("#Sex").val() == "") {
+                alert("Kindly choose Gender!")
+                e.preventDefault();
+            } else if ($("#Age").val() == "") {
+                alert("Kindly enter Age!")
+                e.preventDefault();
+            }
+        });
+        $('#addmore').click(function (e) {
+            e.preventDefault();
+            var docid = $("#Doctorid").val();
+            if (docid != 0) {
+                AddDropDownList(docid);
+            }
+        });
+
+
+        $("#Doctorid").change(function () {
+
+
+
+            $.get("/Patients/GetCasetype", { Doctorid: $("#Doctorid").val() }, function (data) {
+                $("#Casetypeid").empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetSubCasetype", { CaseTypeId: parseInt(row.Value) }, function (data1) {
+                            $("#SubCasetypeid").empty();
+                            $("#SubCasetypeid").append("<option value='" + 0 + "'>" + "Select Subcasetype" + "</option>")
+                            $.each(data1, function (index1, row1) {
+                                
+                                //if (index1 == 0) {
+                                //    var temptotalamt = 0;
+                                //    $.get("/Patients/GetPrice", { subcaseid: parseInt(row1.Value) }, function (data2) {
+                                //        $('#TotalAmount').val(data2);
+                                //        temptotalamt = parseInt(data2);
+                                //    });
+                                //    $.get("/Patients/GetPercentage", { Doctorid: $("#Doctorid").val() }, function (data3) {
+                                //        $('#Percentage').val(data3);
+                                //        var totalamt = temptotalamt;
+                                //        var temppercent = parseInt($('#Percentage').val());
+
+                                //        $('#DoctorCommission').val(totalamt / temppercent);
+                                //    });
+                                //}
+                                
+                                $("#SubCasetypeid").append("<option value='" + row1.Value + "'>" + row1.Text + "</option>")
+                            });
+                        });
+
+                    }
+                    $("#Casetypeid").append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+
+
+            //$('#DoctorCommission').val(($('#Percentage').val() * 100) / $('#TotalAmount').val());
+        });
+
+        $("#Casetypeid").change(function () {
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $("#Casetypeid").val() }, function (data) {
+                $("#SubCasetypeid").empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            $('#TotalAmount').val(data2);
+                            var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $("#SubCasetypeid").append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+            //$('#DoctorCommission').val(($('#Percentage').val() * 100) / $('#TotalAmount').val());
+
+        });
+
+        $("#Discount").blur(function () {
+            var temptotaldata = parseInt($("#TotalAmount").val()) - parseInt($("#Discount").val());
+            $("#Balance").val(temptotaldata);
+        });
+
+        $("#TotalAmount").blur(function () {
+            var temptotaldata = parseInt($("#TotalAmount").val()) - parseInt($("#Discount").val());
+            $("#Balance").val(temptotaldata);
+        });
+
+        $("#SubCasetypeid").change(function () {
+            $.get("/Patients/GetPrice", { subcaseid: $("#SubCasetypeid").val() }, function (data) {
+                if ($('#TotalAmount').val() != "") {
+                    var currdata = parseInt($('#TotalAmount').val());
+                    $('#TotalAmount').val((parseInt(data) + currdata).toString());
+                } else
+                    $('#TotalAmount').val(data.toString());
+                
+                var temppercent = parseInt($('#Percentage').val());
+                var totalamt = parseInt($('#TotalAmount').val());
+                
+                //$('#DoctorCommission').val(totalamt / temppercent);
+                //$('#DoctorCommission').val(($('#Percentage').val() * 100) / $('#TotalAmount').val());
+            });
+        });
+
+        $(".datepicker").datepicker();
+
+        $(document).on('change','#caseiddata1', function () {
+        
+            
+            //var currid = this.id;
+            //alert(currid);
+            //var subcaseidtemp = "subcaseiddata" + currid.slice(-1).toString();
+            //alert(subcaseidtemp);
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $('#caseiddata1').val() }, function (data) {
+                $('#subcaseiddata1').empty();
+
+                $.each(data, function (index, row) {
+                    
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            
+                            if ($('#TotalAmount').val() != "")
+                            {
+                                var currdata = parseInt($('#TotalAmount').val());
+                                $('#TotalAmount').val((parseInt(data2) + currdata).toString());
+                            }else
+                                $('#TotalAmount').val(data2.toString());
+                            if (typeof $('#TotalAmount').val() === "undefined")
+                                $('#TotalAmount').val(data2.toString());
+
+                            //var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $('#subcaseiddata1').append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+        });
+
+        $(document).on('change', '#caseiddata2', function () {
+
+            //alert("datafired");
+            //var currid = this.id;
+            //alert(currid);
+            //var subcaseidtemp = "subcaseiddata" + currid.slice(-1).toString();
+            //alert(subcaseidtemp);
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $('#caseiddata2').val() }, function (data) {
+                $('#subcaseiddata2').empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            if ($('#TotalAmount').val() != "") {
+                                var currdata = parseInt($('#TotalAmount').val());
+                                $('#TotalAmount').val((parseInt(data2) + currdata).toString());
+                            } else
+                                $('#TotalAmount').val(data2.toString());
+                            if (typeof $('#TotalAmount').val() === "undefined")
+                                $('#TotalAmount').val(data2.toString());
+                            //var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $('#subcaseiddata2').append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+        });
+
+        $(document).on('change', '#caseiddata3', function () {
+
+            //alert("datafired");
+            //var currid = this.id;
+            //alert(currid);
+            //var subcaseidtemp = "subcaseiddata" + currid.slice(-1).toString();
+            //alert(subcaseidtemp);
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $('#caseiddata3').val() }, function (data) {
+                $('#subcaseiddata3').empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            if ($('#TotalAmount').val() != "") {
+                                var currdata = parseInt($('#TotalAmount').val());
+                                $('#TotalAmount').val((parseInt(data2) + currdata).toString());
+                            } else
+                                $('#TotalAmount').val(data2.toString());
+                            if (typeof $('#TotalAmount').val() === "undefined")
+                                $('#TotalAmount').val(data2.toString());
+                            //var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $('#subcaseiddata3').append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+        });
+
+        $(document).on('change', '#caseiddata4', function () {
+
+            //alert("datafired");
+            //var currid = this.id;
+            //alert(currid);
+            //var subcaseidtemp = "subcaseiddata" + currid.slice(-1).toString();
+            //alert(subcaseidtemp);
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $('#caseiddata4').val() }, function (data) {
+                $('#subcaseiddata4').empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            if ($('#TotalAmount').val() != "") {
+                                var currdata = parseInt($('#TotalAmount').val());
+                                $('#TotalAmount').val((parseInt(data2) + currdata).toString());
+                            } else
+                                $('#TotalAmount').val(data2.toString());
+                            if (typeof $('#TotalAmount').val() === "undefined")
+                                $('#TotalAmount').val(data2.toString());
+                            //var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $('#subcaseiddata4').append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+        });
+
+        $(document).on('change', '#caseiddata5', function () {
+
+            //alert("datafired");
+            //var currid = this.id;
+            //alert(currid);
+            //var subcaseidtemp = "subcaseiddata" + currid.slice(-1).toString();
+            //alert(subcaseidtemp);
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $('#caseiddata5').val() }, function (data) {
+                $('#subcaseiddata5').empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            if ($('#TotalAmount').val() != "") {
+                                var currdata = parseInt($('#TotalAmount').val());
+                                $('#TotalAmount').val((parseInt(data2) + currdata).toString());
+                            } else
+                                $('#TotalAmount').val(data2.toString());
+                            if (typeof $('#TotalAmount').val() === "undefined")
+                                $('#TotalAmount').val(data2.toString());
+                            //var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $('#subcaseiddata5').append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+        });
+        $(document).on('change', '#caseiddata6', function () {
+
+            //alert("datafired");
+            //var currid = this.id;
+            //alert(currid);
+            //var subcaseidtemp = "subcaseiddata" + currid.slice(-1).toString();
+            //alert(subcaseidtemp);
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $('#caseiddata6').val() }, function (data) {
+                $('#subcaseiddata6').empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            if ($('#TotalAmount').val() != "") {
+                                var currdata = parseInt($('#TotalAmount').val());
+                                $('#TotalAmount').val((parseInt(data2) + currdata).toString());
+                            } else
+                                $('#TotalAmount').val(data2.toString());
+                            if (typeof $('#TotalAmount').val() === "undefined")
+                                $('#TotalAmount').val(data2.toString());
+                            //var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $('#subcaseiddata6').append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+        });
+
+        $(document).on('change', '#caseiddata7', function () {
+
+            //alert("datafired");
+            //var currid = this.id;
+            //alert(currid);
+            //var subcaseidtemp = "subcaseiddata" + currid.slice(-1).toString();
+            //alert(subcaseidtemp);
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $('#caseiddata7').val() }, function (data) {
+                $('#subcaseiddata7').empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            if ($('#TotalAmount').val() != "") {
+                                var currdata = parseInt($('#TotalAmount').val());
+                                $('#TotalAmount').val((parseInt(data2) + currdata).toString());
+                            } else
+                                $('#TotalAmount').val(data2.toString());
+                            if (typeof $('#TotalAmount').val() === "undefined")
+                                $('#TotalAmount').val(data2.toString());
+                            //var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $('#subcaseiddata7').append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+        });
+
+        $(document).on('change', '#caseiddata8', function () {
+
+            //alert("datafired");
+            //var currid = this.id;
+            //alert(currid);
+            //var subcaseidtemp = "subcaseiddata" + currid.slice(-1).toString();
+            //alert(subcaseidtemp);
+            $.get("/Patients/GetSubCasetype", { CaseTypeId: $('#caseiddata8').val() }, function (data) {
+                $('#subcaseiddata8').empty();
+
+                $.each(data, function (index, row) {
+                    if (index == 0) {
+                        $.get("/Patients/GetPrice", { subcaseid: parseInt(row.Value) }, function (data2) {
+                            if ($('#TotalAmount').val() != "") {
+                                var currdata = parseInt($('#TotalAmount').val());
+                                $('#TotalAmount').val((parseInt(data2) + currdata).toString());
+                            } else
+                                $('#TotalAmount').val(data2.toString());
+                            if (typeof $('#TotalAmount').val() === "undefined")
+                                $('#TotalAmount').val(data2.toString());
+                            //var temppercent = parseInt($('#Percentage').val());
+                            var totalamt = parseInt($('#TotalAmount').val());
+                            //$('#DoctorCommission').val(totalamt / temppercent);
+                        });
+                    }
+                    $('#subcaseiddata8').append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                });
+            });
+        });
+
+    });
+
+    function AddDropDownList(docid) {
+        var arr = {};
+        
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetCasetypedata")',
+            data : {Doctorid : docid},
+            dataType: 'json',
+            success: function (response) {
+
+                arr = response;
+                var btnsavedata = $('#totaldiv');
+                //Create a DropDownList element.
+
+                i = i + 1;
+                var ddlCustomers = $('<select class="form-control input-md-3" name="casetypesdata" id = "caseiddata'+ i +'"></select>');
+
+                //Add the Options to the DropDownList.
+
+                $(arr).each(function () {
+                    
+                    var option = $("<option />");
+
+                    //Set Customer Name in Text part.
+                    option.html(this.Text);
+
+                    //Set CustomerId in Value part.
+                    option.val(this.Value);
+
+                    //Add the Option element to DropDownList.
+                    ddlCustomers.append(option);
+                });
+
+                //Reference the container DIV.
+                var dvContainer = $("#maindivform")
+
+                //Add the DropDownList to DIV.
+                    var div = $('<div class="row"></div>');
+
+                //var ddlsubcasetype = $('<select class="form-control input-md-3" name="subcasetypes" id = "caseid'+ i +'"></select>');
+
+                var inputctr = $('<select class="form-control input-md-3" name="subcasetypesdata" id = "subcaseiddata' + i + '"></select>');
+                var divnew = $('<div class="col-md-3 addeddiv"></div>');
+                var divnew2 = $('<div class="col-md-3"></div>');
+                var subarr = {};
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetSubCasetypedata")',
+                    data : {Doctorid : docid},
+                    dataType: 'json',
+                    success: function (response1) {
+                        subarr = response1;
+                        $(subarr).each(function () {
+
+                            var option = $("<option />");
+
+                            //Set Customer Name in Text part.
+                            option.html(this.Text);
+
+                            //Set CustomerId in Value part.
+                            option.val(this.Value);
+
+                            //Add the Option element to DropDownList.
+                            inputctr.append(option);
+                        });
+                    },
+                    error: function (emp) {
+                        alert('error');
+                    }
+                });
+
+
+                divnew.append(ddlCustomers);
+                divnew2.append(inputctr);
+                //Create a Remove Button.
+                var btnRemove = $("<input type = 'button' class='btn btn-dark' value = 'Remove' />");
+                btnRemove.click(function () {
+                    $(this).parent().remove();
+                });
+
+                //Add the Remove Buttton to DIV.
+                divnew.append(btnRemove);
+                div.append(divnew);
+                div.append(divnew2);
+                div.append(btnRemove);
+                //Add the DIV to the container DIV.
+                div.insertBefore(btnsavedata);
+
+                var newbrk = $("<br />");
+                newbrk.insertBefore(btnsavedata);
+
+
+            },
+            error: function (emp) {
+                alert('error');
+            }
+        });
+
+    };
+    </script>
+}
+

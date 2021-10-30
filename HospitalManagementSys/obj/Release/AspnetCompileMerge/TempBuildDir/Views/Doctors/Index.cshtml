@@ -1,0 +1,98 @@
+﻿@*@model IEnumerable<HospitalManagementSys.Models.Doctor>*@
+@model PagedList.IPagedList<HospitalManagementSys.Models.Doctor>
+
+@{
+    ViewBag.Title = "Index";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+<h3>Doctor List</h3>
+<br />
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Create New Doctor" class="btn btn-primary"
+               onclick="location.href='@Url.Action("Create", "Doctors")'" />
+    </div>
+</div>
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayName("Doctor Name")
+        </th>
+        <th>
+            Email Id
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            @Html.DisplayName("Mobile No")
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoctorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNo)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DoctorId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DoctorId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DoctorId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div style="background-color:azure;display:inline-block;border-radius:2px;">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("   <<", "Index", new { page = 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1 })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ");
+        @:< Prev
+    }
+
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+    }
+</div>

@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "DoctorReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>DoctorReport</h5>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="row" style="margin-left:10px;">
+            <div class="col-md-4">
+
+
+                @Html.DropDownList("DoctorId", (SelectList)ViewBag.Sex, "Select Doctor", new { @class = "form-control input-md-4" })
+                <br />
+
+                <input type="submit" value="Search" class="btn btn-primary" id="btnsearch" />
+            </div>
+
+        </div>
+    </div>
+}
+<hr />
+<br />
+<table class="display nowrap" id="MyDataTable" style="margin-left:10px;width:100%;">
+    <thead>
+        <tr>
+            <th>
+                Doctor
+            </th>
+            <th>
+                Case Type
+            </th>
+            <th>
+                Sub Casetype
+            </th>
+            <th>
+                Total Amt
+            </th>
+            
+            <th>
+                Case Date
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnsearch").click(function (e) {
+                e.preventDefault();
+                var docid = $("#DoctorId").val();
+                if (docid == 0) {
+                    alert("kindly select doctor");
+                }
+                else
+                    GetDoctorRecord(docid);
+            });
+
+        });
+
+        var GetDoctorRecord = function (doctoridval) {
+            $.ajax({
+                type: "Get",
+                url: "/Reports/GetDoctorReportRecep",
+                data: {
+                    //Passing Input parameter
+                    doctorid: doctoridval
+                },
+                success: function (response) {
+                    BindDataTable(response);
+                }
+            });
+        };
+
+        var BindDataTable = function (response) {
+
+            $("#MyDataTable").DataTable({
+                "aaData": response,
+                "aoColumns": [
+                    { "mData": "Doctor" },
+                    { "mData": "CaseType" },
+                    { "mData": "Subcasetype" },
+                    { "mData": "TotalAmount" },
+                    
+                    { "mData": "CaseDate" },
+
+                ]
+                ,
+                "dom": 'Bfrtip',
+                "buttons": [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                "select": true,
+                "columnDefs": [{
+                    "targets": [2, 3],
+                    "orderable": false
+                }]
+            });
+
+        };
+    </script>
+
+}
+

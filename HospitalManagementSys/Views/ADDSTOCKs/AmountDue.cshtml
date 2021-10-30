@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "AmountDue";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>AmountDue</h4>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="row" style="margin-left:10px;">
+            <div class="col-md-4">
+
+
+                @Html.DropDownList("SUPPLIERID", (SelectList)ViewBag.SUPPLIERID, "Select Supplier", new { @class = "form-control input-md-4" })
+                <br />
+
+                <input type="submit" value="Search" class="btn btn-primary" id="btnsearch" />
+            </div>
+
+        </div>
+    </div>
+}
+<hr />
+<br />
+<table class="display nowrap" id="MyDataTable" style="margin-left:10px;width:100%;">
+    <thead>
+        <tr>
+            <th>
+                Supplier
+            </th>
+            <th>
+                Mobile No
+            </th>
+            <th>
+                Items
+            </th>
+            <th>
+                Total Amt
+            </th>
+            <th>
+                Amount Paid
+            </th>
+            <th>
+                Amount Due
+            </th>
+            <th>
+                 Date
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnsearch").click(function (e) {
+                e.preventDefault();
+                var supid = $("#SUPPLIERID").val();
+                if (supid == 0) {
+                    alert("kindly select Supplier");
+                }
+                else
+                    GetSupplierRecord(supid);
+            });
+
+        });
+
+        var GetSupplierRecord = function (supidvalue) {
+            $.ajax({
+                type: "Get",
+                url: "/ADDSTOCKs/GetSupplier",
+                data: {
+                    //Passing Input parameter
+                    supplierid: supidvalue
+                },
+                success: function (response) {
+                    BindDataTable(response);
+                }
+            });
+        };
+
+        var BindDataTable = function (response) {
+
+            $("#MyDataTable").DataTable({
+                "aaData": response,
+                "aoColumns": [
+                    { "mData": "Supplier" },
+                    { "mData": "MobileNo" },
+                    { "mData": "Items" },
+                    { "mData": "TotalAmount" },
+                    { "mData": "AmountPaid" },
+                    { "mData": "AmountDue" },
+                    { "mData": "StockDate" },
+
+                ]
+                ,
+                "dom": 'Bfrtip',
+                "buttons": [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                "select": true
+                //"columnDefs": [{
+                //    "defaultContent": "-",
+                //    "targets": "_all"
+                //}]
+            });
+
+        };
+    </script>
+
+}

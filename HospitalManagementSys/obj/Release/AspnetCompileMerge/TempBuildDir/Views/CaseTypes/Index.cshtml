@@ -1,0 +1,80 @@
+﻿@*@model IEnumerable<HospitalManagementSys.Models.CaseType>*@
+@model PagedList.IPagedList<HospitalManagementSys.Models.CaseType>
+
+@{
+    ViewBag.Title = "Index";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+<h3>Case Type List</h3>
+<br />
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Create New Casetypes" class="btn btn-primary"
+               onclick="location.href='@Url.Action("Create", "CaseTypes")'" />
+    </div>
+</div>
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayName("Case Type")
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaseType1)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CaseTypeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CaseTypeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CaseTypeId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div style="background-color:azure;display:inline-block;border-radius:2px;">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("   <<", "Index", new { page = 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1 })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ");
+        @:< Prev
+    }
+
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+    }
+</div>

@@ -1,0 +1,49 @@
+﻿@model HospitalManagementSys.Models.SUPPLIER
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SUPPLIER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SUPPLIERNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUPPLIERNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANYNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANYNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOBILENO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOBILENO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

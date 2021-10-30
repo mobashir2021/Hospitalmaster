@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HospitalManagementSys.Models.Price>
+
+@{
+    ViewBag.Title = "Index";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+<h2>Price List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Price")
+        </th>
+        <th>
+            @Html.DisplayName("Case Type")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doctor.DoctorName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.price1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaseType.CaseType1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctor.DoctorName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PriceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PriceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PriceId })
+        </td>
+    </tr>
+}
+
+</table>

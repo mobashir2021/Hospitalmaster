@@ -1,0 +1,156 @@
+﻿@model HospitalManagementSys.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+    if (HospitalManagementSys.Models.RolesData.RolesValue == "admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (HospitalManagementSys.Models.RolesData.RolesValue == "receiptionist")
+    {
+        Layout = "~/Views/Shared/_LayoutReceiptionist.cshtml";
+    }
+}
+
+
+
+<div>
+    <h4>Patient Details</h4>
+    <hr />
+    <table class="table-bordered">
+        <tr>
+            <th>Patient</th>
+            <th>SO/DO/WO</th>
+            <th>Address</th>
+            <th>Mobile No</th>
+            <th>Sex</th>
+            <th>Age</th>
+            <th>Case Date</th>
+            <th>Ref by</th>
+            <th>Notes</th>
+        </tr>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.PatientName)</td>
+                <td>@Html.DisplayFor(model => model.SODO)</td>
+                <td>@Html.DisplayFor(model => model.Address)</td>
+                <td>@Html.DisplayFor(model => model.MobileNo)</td>
+                <td>@Html.DisplayFor(model => model.Sex)</td>
+                <td>@Html.DisplayFor(model => model.Age)</td>
+                <td>@Html.DisplayFor(model => model.CaseDate)</td>
+                <td>@Html.DisplayFor(model => model.Doctor.DoctorName)</td>
+                <td>@Html.DisplayFor(model => model.Notes)</td>
+            </tr>
+        </tbody>
+    </table>
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BloodGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BloodGroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegdDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegdDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaseTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Case Type")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseType.CaseType1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor.DoctorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.DoctorName)
+        </dd>
+
+    </dl>*@
+</div>
+<p>
+    @Html.ActionLink("Print", "PrintdataPatient", new { id = Model.PatientId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
